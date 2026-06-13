@@ -1,0 +1,11 @@
+Time resolution is 1 ps
+Starting ALU Tests...
+--------------------------------------------------
+ADD:          10 +          5 =         15 | Zero Flag: 0
+SUB:          10 -          5 =          5  | Zero Flag: 0
+AND:  1010 & 0101 = 0000 | Zero Flag: 1
+OR:   1010 | 0101 = 1111 | Zero Flag: 0
+ZERO:         15 -         15 =          0  | Zero Flag: 1
+--------------------------------------------------
+Testing Complete.
+$finish called at time : 50 ns : File "D:/verilog projects/RISC_V_Single_Cycle/RISC_V_Single_Cycle.srcs/sim_1/new/ALU_TEST_BENCH.v" Line 63
