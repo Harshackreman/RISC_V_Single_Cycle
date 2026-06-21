@@ -1,5 +1,5 @@
 `timescale 1ns / 1ps
-module ALU_BLOCK(
+module alu_block(
     input [31:0] a,
     input [31:0] b,
     input [2:0] alucontrol,

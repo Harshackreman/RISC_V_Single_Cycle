@@ -2,62 +2,47 @@
 
 module datapath(
     input clk,
-    
-    // Control and Instruction signals (for now, inputs to our top module)
-    input [4:0] rs1,
-    input [4:0] rs2,
-    input [4:0] rd,
+    input rst,
     input regwire,
-    input [2:0] alucontrol,
+    input [2:0] alu_control,
+    output [31:0] alu_result_out
+    );
+    wire [31:0] current_pc;
+    wire [31:0] next_pc;
+    wire [31:0] instruction;
+    wire [31:0] readData1;
+    wire [31:0] readData2;
+    wire [31:0] alu_result;
     
-    // Outputs to observe what is happening in a testbench
-    output [31:0] final_result,
-    output zero_flag
-);
+    assign next_pc=current_pc+32'd4;  // this basically means next_pc=pc+4
+    //integration of the pc counter in the main CPU circuit,
+    
+    pc_counter main_pc_counter(.clk(clk),
+                               .rst(rst),
+                               .pc_next(pc_next),
+                                .pc(current_pc));
+    
+    //integration of the main_instruction_memory.
+    instruction_memory main_instruction_memory(.pc_address(current_pc),.instruction(instruction));
+    
+    //here we have to now plug in the register the file into the main circuit now we do it .
+    
+    register_file main_register_file(
+                                      .clk(clk),
+                                     .regwire(regwire),
+                                     .rs1(instruction[19:15]),
+                                     .rs2(instruction[24:20]),
+                                     .rd(instruction[11:7]),
+                                     .writedata(alu_result),
+                                     .readData1(readData1),
+                                     .readData2(readData2)
+                                     );
+  //now this phase we integrate the alu_block.
+   alu_block main_alu_block(.a(readData1),.b(readData2),.alucontrol(alu_control),.result(alu_result),.zero());
+   
+   assign alu_result_out=alu_result;
+   
+    
 
-    // ==========================================
-    // 1. Declare Internal Wires (The Cables)
-    // ==========================================
-    wire [31:0] wire_readData1;
-    wire [31:0] wire_readData2;
-    wire [31:0] wire_alu_result;  // THE MAGIC WIRE
-
-    // ==========================================
-    // 2. Instantiate the Register File
-    // ==========================================
-    register_file uut (
-        .clk(clk),
-        .rs1(rs1),
-        .rs2(rs2),
-        .rd(rd),
-        .regwire(regwire),
-        
-        // Output ports driving internal wires
-        .read_Data1(wire_readData1), 
-        .read_Data2(wire_readData2), 
-        
-        // Input port receiving data from the ALU wire
-        .writedata(wire_alu_result) 
-    );
-
-    // ==========================================
-    // 3. Instantiate the ALU
-    // ==========================================
-    ALU_BLOCK dut (
-        .alucontrol(alucontrol),
-        
-        // Input ports receiving data from the RegFile wires
-        .a(wire_readData1), 
-        .b(wire_readData2), 
-        
-        // Output port driving the result onto the wire
-        .result(wire_alu_result), 
-        .zero(zero_flag)
-    );
-
-    // ==========================================
-    // 4. Output Assignments (For testing/visibility)
-    // ==========================================
-    assign final_result = wire_alu_result;
-
+   
 endmodule

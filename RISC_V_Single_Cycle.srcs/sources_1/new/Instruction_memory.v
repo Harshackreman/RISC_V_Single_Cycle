@@ -1,7 +1,7 @@
 `timescale 1ns / 1ps
 //this the book and pc counter is the book mark we use to read it .
 
-module Instruction_memory(
+module instruction_memory(
     input [31:0] pc_address,
     output [31:0] instruction
     );

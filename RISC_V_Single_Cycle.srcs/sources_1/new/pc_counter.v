@@ -17,5 +17,4 @@ module pc_counter(
             
         end
    
-     
 endmodule
