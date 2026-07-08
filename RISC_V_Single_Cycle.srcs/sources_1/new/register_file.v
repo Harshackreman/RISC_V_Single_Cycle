@@ -2,7 +2,7 @@
 module register_file(
     input [4:0] rs1,//5 bit address of the register we want to read
     input [4:0] rs2,//5 bit address of the register we want to read
-    input [4:0] rs2,//5 bit address of the register we want to read
+  //  input [4:0] rs2,//5 bit address of the register we want to read
     input [4:0] rd,//this is the adress(5 bit) of register in which next input has to be sotred
     input  clk,
     input regwire ,//control input of the register 

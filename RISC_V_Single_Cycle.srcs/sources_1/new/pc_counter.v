@@ -5,7 +5,7 @@ module pc_counter(
     input [31:0] pc_next,
     output reg [31:0] pc
     );
-    always @(posedge clk)
+    always @(posedge clk) //if reset is pushed then turn pc to 0 else push it to next instruction adress
        begin
          if(rst==1'b0) begin
           pc<=pc_next;

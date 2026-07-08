@@ -7,15 +7,15 @@ module datapath_tb();
     reg rst;
     wire [31:0] alu_result_out;
 
-    // 2. Instantiate the completed Datapath
+    // Instantiating the datapath and then running test values on it ; 
     datapath my_cpu (
         .clk(clk),
         .rst(rst),
         .alu_result_out(alu_result_out)
     );
 
-    // 3. Create the Clock Heartbeat
-    // This flips the clock signal every 5 nanoseconds (100 MHz frequency)
+    // here we are creating the clock that will basically regulate the entire circuit;
+    // the time period of this clock is 
     always #5 clk = ~clk;
 
     // 4. The Test Sequence
@@ -28,8 +28,8 @@ module datapath_tb();
         // The CPU will now run 100% autonomously, fetching instructions from memory!
         #10 rst = 0;
 
-        // Let the simulation run for 100ns to give the CPU time to execute the code
-        #100;
+        // Letting the simulation run for 200ns to give the CPU time to execute the code
+        #200;
         
         // Stop the simulation
         $finish; 

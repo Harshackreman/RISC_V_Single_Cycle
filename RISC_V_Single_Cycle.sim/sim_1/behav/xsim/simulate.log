@@ -1,11 +1,8 @@
 Time resolution is 1 ps
-Starting ALU Tests...
---------------------------------------------------
-ADD:          10 +          5 =         15 | Zero Flag: 0
-SUB:          10 -          5 =          5  | Zero Flag: 0
-AND:  1010 & 0101 = 0000 | Zero Flag: 1
-OR:   1010 | 0101 = 1111 | Zero Flag: 0
-ZERO:         15 -         15 =          0  | Zero Flag: 1
---------------------------------------------------
-Testing Complete.
-$finish called at time : 50 ns : File "D:/verilog projects/RISC_V_Single_Cycle/RISC_V_Single_Cycle.srcs/sim_1/new/ALU_TEST_BENCH.v" Line 63
+Time=0 | Reset=1 | ALU Output (Dec)=x
+Time=5000 | Reset=1 | ALU Output (Dec)=5
+Time=10000 | Reset=0 | ALU Output (Dec)=5
+Time=15000 | Reset=0 | ALU Output (Dec)=3
+Time=25000 | Reset=0 | ALU Output (Dec)=8
+Time=35000 | Reset=0 | ALU Output (Dec)=x
+$finish called at time : 210 ns : File "D:/verilog projects/RISC_V_Single_Cycle/RISC_V_Single_Cycle.srcs/sources_1/new/riscv_tb.v" Line 35
