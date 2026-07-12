@@ -9,9 +9,9 @@ This project was built to gain a deep understanding of computer architecture, th
 This processor implements a subset of the **RV32I Base Integer Instruction Set**. It utilizes a single-cycle datapath, meaning every instruction completes its entire journey (Fetch, Decode, Execute, Memory, Write-Back) in exactly one clock cycle.
  Key Components Built:
 
-* Program Counter (PC):** Tracks the current execution address.
+* Program Counter (PC): Tracks the current execution address.
 
-* Instruction Memory (ROM):** Byte-addressable memory that outputs the 32-bit machine code.
+* Instruction Memory (ROM):Byte-addressable memory that outputs the 32-bit machine code.
 
 * Register File: 32 general-purpose 32-bit registers (`x0` to `x31`).
 
