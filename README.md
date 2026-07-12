@@ -59,4 +59,4 @@ How to Run:
 
 * Upgrade the architecture from Single-Cycle to a **5-Stage Pipelined** architecture.
 
-*Built with passion and lots of multiplexers.
+Built with passion and lots of multiplexers!!!:)
